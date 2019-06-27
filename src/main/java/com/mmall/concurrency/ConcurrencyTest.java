@@ -22,7 +22,9 @@ public class ConcurrencyTest {
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();
+        // 信号量
         final Semaphore semaphore = new Semaphore(threadTotal);
+        // 倒计时闩锁
         final CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         for (int i = 0; i < clientTotal ; i++) {
             executorService.execute(() -> {
